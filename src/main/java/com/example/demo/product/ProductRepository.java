@@ -1,6 +1,6 @@
-package com.example.noBSSpringBoot.product;
+package com.example.demo.product;
 
-import com.example.noBSSpringBoot.product.model.Product;
+import com.example.demo.product.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

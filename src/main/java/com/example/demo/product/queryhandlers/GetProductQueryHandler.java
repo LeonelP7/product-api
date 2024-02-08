@@ -1,9 +1,9 @@
-package com.example.noBSSpringBoot.product.queryhandlers;
+package com.example.demo.product.queryhandlers;
 
-import com.example.noBSSpringBoot.Query;
-import com.example.noBSSpringBoot.product.ProductRepository;
-import com.example.noBSSpringBoot.product.model.Product;
-import com.example.noBSSpringBoot.product.model.ProductDTO;
+import com.example.demo.Query;
+import com.example.demo.product.ProductRepository;
+import com.example.demo.product.model.Product;
+import com.example.demo.product.model.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

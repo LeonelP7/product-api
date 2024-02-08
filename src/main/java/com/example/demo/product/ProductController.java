@@ -1,13 +1,13 @@
-package com.example.noBSSpringBoot.product;
+package com.example.demo.product;
 
-import com.example.noBSSpringBoot.product.commandhandlers.CreateProductCommandHandler;
-import com.example.noBSSpringBoot.product.commandhandlers.DeleteProductCommandHandler;
-import com.example.noBSSpringBoot.product.commandhandlers.UpdateProductCommandHandler;
-import com.example.noBSSpringBoot.product.model.Product;
-import com.example.noBSSpringBoot.product.model.ProductDTO;
-import com.example.noBSSpringBoot.product.model.UpdateProductCommand;
-import com.example.noBSSpringBoot.product.queryhandlers.GetAllProductsQueryHandler;
-import com.example.noBSSpringBoot.product.queryhandlers.GetProductQueryHandler;
+import com.example.demo.product.commandhandlers.CreateProductCommandHandler;
+import com.example.demo.product.commandhandlers.DeleteProductCommandHandler;
+import com.example.demo.product.commandhandlers.UpdateProductCommandHandler;
+import com.example.demo.product.model.Product;
+import com.example.demo.product.model.ProductDTO;
+import com.example.demo.product.model.UpdateProductCommand;
+import com.example.demo.product.queryhandlers.GetAllProductsQueryHandler;
+import com.example.demo.product.queryhandlers.GetProductQueryHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

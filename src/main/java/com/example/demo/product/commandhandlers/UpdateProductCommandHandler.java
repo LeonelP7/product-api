@@ -1,9 +1,9 @@
-package com.example.noBSSpringBoot.product.commandhandlers;
+package com.example.demo.product.commandhandlers;
 
-import com.example.noBSSpringBoot.Command;
-import com.example.noBSSpringBoot.product.ProductRepository;
-import com.example.noBSSpringBoot.product.model.Product;
-import com.example.noBSSpringBoot.product.model.UpdateProductCommand;
+import com.example.demo.Command;
+import com.example.demo.product.ProductRepository;
+import com.example.demo.product.model.Product;
+import com.example.demo.product.model.UpdateProductCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.example.noBSSpringBoot.product.model;
+package com.example.demo.product.model;
 
 import lombok.Data;
 
