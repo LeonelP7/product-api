@@ -4,6 +4,7 @@ import com.example.noBSSpringBoot.product.commandhandlers.CreateProductCommandHa
 import com.example.noBSSpringBoot.product.commandhandlers.DeleteProductCommandHandler;
 import com.example.noBSSpringBoot.product.commandhandlers.UpdateProductCommandHandler;
 import com.example.noBSSpringBoot.product.model.Product;
+import com.example.noBSSpringBoot.product.model.ProductDTO;
 import com.example.noBSSpringBoot.product.model.UpdateProductCommand;
 import com.example.noBSSpringBoot.product.queryhandlers.GetAllProductsQueryHandler;
 import com.example.noBSSpringBoot.product.queryhandlers.GetProductQueryHandler;
@@ -36,12 +37,12 @@ public class ProductController {
     private DeleteProductCommandHandler deleteProductCommandHandler;
 
     @GetMapping
-    public ResponseEntity<List<Product>> getProducts(){
+    public ResponseEntity<List<ProductDTO>> getProducts(){
         return getAllProductsQueryHandler.execute(null);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProduct(@PathVariable Integer id){
+    public ResponseEntity<ProductDTO> getProduct(@PathVariable Integer id){
         return getProductQueryHandler.execute(id);
     }
 
