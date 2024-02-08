@@ -1,6 +1,8 @@
 package com.example.noBSSpringBoot.product;
 
 import com.example.noBSSpringBoot.product.commandhandlers.CreateProductCommandHandler;
+import com.example.noBSSpringBoot.product.commandhandlers.DeleteProductCommandHandler;
+import com.example.noBSSpringBoot.product.commandhandlers.UpdateProductCommandHandler;
 import com.example.noBSSpringBoot.product.model.Product;
 import com.example.noBSSpringBoot.product.model.UpdateProductCommand;
 import com.example.noBSSpringBoot.product.queryhandlers.GetAllProductsQueryHandler;
@@ -27,6 +29,12 @@ public class ProductController {
     @Autowired
     private CreateProductCommandHandler createProductCommandHandler;
 
+    @Autowired
+    private UpdateProductCommandHandler updateProductCommandHandler;
+
+    @Autowired
+    private DeleteProductCommandHandler deleteProductCommandHandler;
+
     @GetMapping
     public ResponseEntity<List<Product>> getProducts(){
         return getAllProductsQueryHandler.execute(null);
@@ -45,16 +53,12 @@ public class ProductController {
     @PutMapping("/{id}")
     public ResponseEntity updateProduct(@PathVariable Integer id, @RequestBody Product product){
         UpdateProductCommand update = new UpdateProductCommand(id, product);
-        product.setId(id);
-        productRepository.save(product);
-        return ResponseEntity.ok().build();
+        return updateProductCommandHandler.execute(update);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteProduct(@PathVariable Integer id){
-        Product product = productRepository.findById(id).get();
-        productRepository.delete(product);
-        return ResponseEntity.ok().build();
+        return deleteProductCommandHandler.execute(id);
     }
 
 }

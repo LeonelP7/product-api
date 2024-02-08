@@ -3,21 +3,26 @@ package com.example.noBSSpringBoot.product.commandhandlers;
 import com.example.noBSSpringBoot.Command;
 import com.example.noBSSpringBoot.product.ProductRepository;
 import com.example.noBSSpringBoot.product.model.Product;
-import com.example.noBSSpringBoot.product.model.UpdateProductCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
-public class UpdateProductCommandHandler implements Command<UpdateProductCommand, ResponseEntity> {
+public class DeleteProductCommandHandler implements Command<Integer, ResponseEntity> {
     @Autowired
-    private ProductRepository productRepository;
+    ProductRepository productRepository;
 
     @Override
-    public ResponseEntity<ResponseEntity> execute(UpdateProductCommand command) {
-        Product product = command.getProduct();
-        product.setId(command.getId());
-        productRepository.save(product);
+    public ResponseEntity<ResponseEntity> execute(Integer id) {
+
+        Optional product = productRepository.findById(id);
+        if (product.isEmpty()){
+            throw new RuntimeException("Product not found");
+        }
+
+        productRepository.delete((Product) product.get());
         return ResponseEntity.ok().build();
     }
 }

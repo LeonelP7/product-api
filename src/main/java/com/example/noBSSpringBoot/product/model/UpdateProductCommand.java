@@ -1,5 +1,8 @@
 package com.example.noBSSpringBoot.product.model;
 
+import lombok.Data;
+
+@Data
 public class UpdateProductCommand {
 
     private Integer id;
