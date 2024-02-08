@@ -1,6 +1,7 @@
 package com.example.demo.product.commandhandlers;
 
 import com.example.demo.Command;
+import com.example.demo.exeptions.ProductNotFoundException;
 import com.example.demo.product.ProductRepository;
 import com.example.demo.product.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class DeleteProductCommandHandler implements Command<Integer, ResponseEnt
 
         Optional product = productRepository.findById(id);
         if (product.isEmpty()){
-            throw new RuntimeException("Product not found");
+            throw new ProductNotFoundException();
         }
 
         productRepository.delete((Product) product.get());

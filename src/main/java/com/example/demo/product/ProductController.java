@@ -1,5 +1,6 @@
 package com.example.demo.product;
 
+import com.example.demo.exeptions.ProductNotFoundException;
 import com.example.demo.product.commandhandlers.CreateProductCommandHandler;
 import com.example.demo.product.commandhandlers.DeleteProductCommandHandler;
 import com.example.demo.product.commandhandlers.UpdateProductCommandHandler;
@@ -9,6 +10,7 @@ import com.example.demo.product.model.UpdateProductCommand;
 import com.example.demo.product.queryhandlers.GetAllProductsQueryHandler;
 import com.example.demo.product.queryhandlers.GetProductQueryHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,6 +62,11 @@ public class ProductController {
     @DeleteMapping("/{id}")
     public ResponseEntity deleteProduct(@PathVariable Integer id){
         return deleteProductCommandHandler.execute(id);
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<String> handProductNotFoundException(){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found");
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.demo.product.queryhandlers;
 
 import com.example.demo.Query;
+import com.example.demo.exeptions.ProductNotFoundException;
 import com.example.demo.product.ProductRepository;
 import com.example.demo.product.model.Product;
 import com.example.demo.product.model.ProductDTO;
@@ -21,7 +22,7 @@ public class GetProductQueryHandler implements Query<Integer, ProductDTO> {
         Optional product = productRepository.findById(id);
 
         if (product.isEmpty()){
-            throw new RuntimeException("Product not found");
+            throw new ProductNotFoundException();
         }
         ProductDTO productDTO = new ProductDTO((Product) product.get());
 
