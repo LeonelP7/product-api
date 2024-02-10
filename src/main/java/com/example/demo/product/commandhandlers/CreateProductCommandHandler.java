@@ -5,6 +5,8 @@ import com.example.demo.exeptions.ProductNotValidException;
 import com.example.demo.product.ProductRepository;
 import com.example.demo.product.model.Product;
 import io.micrometer.common.util.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,8 +16,11 @@ public class CreateProductCommandHandler implements Command<Product, ResponseEnt
     @Autowired
     private ProductRepository productRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger(CreateProductCommandHandler.class);
+
     @Override
     public ResponseEntity<ResponseEntity> execute(Product product) {
+        logger.info("Executing " + getClass() + " with " + product.toString());
 
         validateProduct(product);
 
@@ -25,18 +30,22 @@ public class CreateProductCommandHandler implements Command<Product, ResponseEnt
 
     private void validateProduct(Product product) {
         if (StringUtils.isBlank(product.getName())){
+            logger.error("Product Not Valid Exception was thrown (invalid name)" + product.toString());
             throw new ProductNotValidException("Product name cannot be blank");
         }
 
         if (StringUtils.isBlank(product.getDescription())){
+            logger.error("Product Not Valid Exception was thrown (invalid description)" + product.toString());
             throw new ProductNotValidException("Product description cannot be blank");
         }
 
         if (product.getPrice() <= 0){
+            logger.error("Product Not Valid Exception was thrown (invalid price)" + product.toString());
             throw new ProductNotValidException("Product price cannot be negative");
         }
 
         if (product.getQuantity() <= 0){
+            logger.error("Product Not Valid Exception was thrown (invalid quantity)" + product.toString());
             throw new ProductNotValidException("Product quantity cannot be negative");
         }
     }
