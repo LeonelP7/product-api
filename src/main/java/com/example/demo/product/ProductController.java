@@ -64,9 +64,9 @@ public class ProductController {
         return deleteProductCommandHandler.execute(id);
     }
 
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<String> handProductNotFoundException(){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found");
+    @GetMapping("/search")
+    public ResponseEntity<List<Product>> searchProducts(@RequestParam(value = "description") String description){
+        return ResponseEntity.ok(productRepository.findByDescriptionContaining(description));
     }
 
 }
