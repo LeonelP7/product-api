@@ -6,6 +6,8 @@ import com.example.demo.product.ProductRepository;
 import com.example.demo.product.model.Product;
 import com.example.demo.product.model.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ public class GetProductQueryHandler implements Query<Integer, ProductDTO> {
     private ProductRepository productRepository;
 
     @Override
+    @Cacheable("productCache")
     public ResponseEntity<ProductDTO> execute(Integer id) {
         Optional product = productRepository.findById(id);
 
