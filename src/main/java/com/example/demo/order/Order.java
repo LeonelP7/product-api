@@ -8,6 +8,10 @@ import lombok.Data;
 
 import java.util.UUID;
 
+/*
+This and subsequent classes are an implementation of UUID and doesn’t really add functionality to de API
+ */
+
 @Entity
 @Table(name = "orders")
 @Data

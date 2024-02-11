@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+/*
+This and subsequent classes are an implementation of external API integration and doesn’t really add functionality to the API
+ */
 
 @Entity
 @Table(name = "cat_facts")
