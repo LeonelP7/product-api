@@ -1,6 +1,6 @@
 package com.example.demo.controllertest;
 
-import com.example.demo.NoBsSpringBootApplication;
+import com.example.demo.AmazonApiApplication;
 import com.example.demo.exeptions.ProductNotFoundException;
 import com.example.demo.product.ProductRepository;
 import com.example.demo.product.model.Product;
@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest(classes = NoBsSpringBootApplication.class)
+@SpringBootTest(classes = AmazonApiApplication.class)
 public class GetProductQueryHandlerTest {
 
     @InjectMocks

@@ -1,6 +1,6 @@
 package com.example.demo.controllertest;
 
-import com.example.demo.NoBsSpringBootApplication;
+import com.example.demo.AmazonApiApplication;
 import com.example.demo.exeptions.ProductNotValidException;
 import com.example.demo.product.ProductRepository;
 import com.example.demo.product.commandhandlers.CreateProductCommandHandler;
@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@SpringBootTest(classes = NoBsSpringBootApplication.class)
+@SpringBootTest(classes = AmazonApiApplication.class)
 public class CreateProductCommandHandlerTest {
 
     @InjectMocks
