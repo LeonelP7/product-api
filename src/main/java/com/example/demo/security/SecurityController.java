@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SecurityController {
 
-    @GetMapping("/open")
-    public String open(){
-        return "No login required";
+    @GetMapping("/special")
+    public String special(){
+        return "SPECIAL";
     }
 
-    @GetMapping("/closed")
-    public String closed(){
-        return "Login is required";
+    @GetMapping("/basic")
+    public String basic(){
+        return "BASIC";
     }
 }

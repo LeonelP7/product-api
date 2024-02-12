@@ -2,6 +2,7 @@ package com.example.demo.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -20,9 +21,18 @@ public class SecurityConfiguration {
         UserDetails admin = User
                 .withUsername("admin")
                 .password(encoder.encode("1"))
+                .roles("ADMIN", "USER")
+//                .authorities("SPECIAL", "BASIC")
                 .build();
 
-        return new InMemoryUserDetailsManager(admin);
+        UserDetails user = User
+                .withUsername("user")
+                .password(encoder.encode("2"))
+                .roles("USER")
+//                .authorities("BASIC")
+                .build();
+
+        return new InMemoryUserDetailsManager(admin, user);
     }
 
     @Bean
@@ -34,10 +44,8 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .authorizeRequests()
-                .requestMatchers("/open")
-                .permitAll()
-                .requestMatchers("/closed")
-                .authenticated()
+                .requestMatchers(HttpMethod.GET, "/special").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/basic").hasAnyRole("ADMIN","USER")
                 .and()
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults())
