@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 /*
-This is an implementation of custom headers and doesn’t really add functionality to the API
+This is an implementation of custom headers
  */
 
 @RestController
